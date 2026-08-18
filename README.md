@@ -59,9 +59,17 @@ GEMINI_API_KEY=your_key_here
 `vercel dev` will pick it up automatically. This file is already excluded via `.gitignore` — never commit it.
 
 ## Editing later
-- **Prices**: edit `<span class="price">Price on enquiry</span>` in `script.js` (`renderProducts` function), or hardcode per-model prices there once decided.
+- **Prices**: edit the `<span class="price">Price on enquiry</span>` line inside `batteryCard()` / `inverterCard()` in `script.js`, or hardcode per-model prices there once decided.
 - **Phone / WhatsApp number**: search `916376309311` across `index.html`, `script.js`, and `api/chat.js`.
 - **Email**: search `yogeshdhaka311@gmail.com` in `index.html`.
-- **Product range**: edit the `CATALOG` object at the top of `script.js`.
-- **What the AI chatbot knows**: edit `SYSTEM_CONTEXT` at the top of `api/chat.js` — that's the only place its facts about AuraSine come from.
+- **Battery range**: edit the `CATALOG` object near the top of `script.js`.
+- **Inverter range (VA ratings)**: edit the `INVERTERS` array right below `CATALOG` in `script.js`.
+- **What the AI chatbot knows**: edit `SYSTEM_CONTEXT` at the top of `api/chat.js` — that's the only place its facts about AuraSine come from. (The actual Gemini API call, headers, and key handling below it should not need to change.)
 - **Chatbot model**: `api/chat.js` uses `gemini-flash-latest`, Google's alias that always points to their current recommended fast model, so it won't go stale.
+
+## Notes on this update
+- Battery chemistry corrected to **LiFePO4** (Lithium Iron Phosphate) throughout the site and the chatbot's facts.
+- Added a **Complete Inverters** product line (1500VA / 2500VA / 5000VA) with Bluetooth app monitoring, alongside the existing battery-only packs.
+- Site restyled to a **light theme** across all sections (hero, technology, contact) — dark ink is now used only as an accent (buttons, nav pill, footer, chat header).
+- Scroll animations are slower and slightly 3D (`rotateX` tilt) for a smoother "pop-in" feel.
+- The intro/preloader now stays visible for a minimum ~2 seconds so its animated logo draw is actually seen, instead of flashing past on a fast connection.

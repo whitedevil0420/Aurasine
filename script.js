@@ -2,16 +2,21 @@
 // AuraSine — main script
 // ===================================================================
 
-/* ---------- PRELOADER ---------- */
-window.addEventListener('load', () => {
+/* ---------- PRELOADER (shows for a minimum ~2s so the intro animation actually plays) ---------- */
+(() => {
   const pre = document.getElementById('preloader');
-  setTimeout(() => pre.classList.add('hidden'), 500);
-});
-// Safety net: never let the preloader trap a visitor if 'load' is slow
-setTimeout(() => {
-  const pre = document.getElementById('preloader');
-  if (pre) pre.classList.add('hidden');
-}, 3500);
+  const MIN_DISPLAY = 2000;
+  const shownAt = performance.now();
+  const hide = () => {
+    const elapsed = performance.now() - shownAt;
+    const wait = Math.max(MIN_DISPLAY - elapsed, 0);
+    setTimeout(() => pre.classList.add('hidden'), wait);
+  };
+  if (document.readyState === 'complete') hide();
+  else window.addEventListener('load', hide);
+  // Safety net: never let the preloader trap a visitor if 'load' is slow
+  setTimeout(() => pre.classList.add('hidden'), 4000);
+})();
 
 /* ---------- MOBILE MENU ---------- */
 const menuToggle = document.getElementById('menuToggle');
@@ -93,46 +98,83 @@ for (let i = 0; i < PARTICLE_COUNT; i++) {
 }
 
 /* ---------- PRODUCT CATALOG ----------
-   Only these battery configurations are actually manufactured:
+   Battery-only packs — only these configurations are actually manufactured:
    100Ah -> 12V only
    200Ah -> 12V, 24V
    500Ah -> 12V, 24V, 48V
+
+   Complete inverter systems (battery + inverter unit, Bluetooth app control):
+   1500VA, 2500VA, 5000VA
 ------------------------------------------------------------------ */
 const CATALOG = {
   100: [12],
   200: [12, 24],
   500: [12, 24, 48]
 };
+const INVERTERS = [1500, 2500, 5000];
 const grid = document.getElementById('productGrid');
+
+function batteryCard(cap, v) {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <div class="cap-row">
+      <span class="cap">${cap}Ah</span>
+      <span class="volt">${v}V</span>
+    </div>
+    <div class="series">${cap} Ah Battery Pack</div>
+    <div class="spec-tags">
+      <span>Pure Sine Wave</span>
+      <span>LiFePO4</span>
+      <span>5yr Warranty</span>
+    </div>
+    <div class="price-row">
+      <span class="price">Price on enquiry</span>
+      <a href="#contact" class="enquire">Enquire →</a>
+    </div>
+  `;
+  return card;
+}
+
+function inverterCard(va) {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <div class="cap-row">
+      <span class="cap">${va}VA</span>
+      <span class="volt">Complete</span>
+    </div>
+    <div class="series">Complete Inverter System</div>
+    <div class="spec-tags">
+      <span>Pure Sine Wave</span>
+      <span>LiFePO4</span>
+      <span>Bluetooth App</span>
+      <span>5yr Warranty</span>
+    </div>
+    <div class="price-row">
+      <span class="price">Price on enquiry</span>
+      <a href="#contact" class="enquire">Enquire →</a>
+    </div>
+  `;
+  return card;
+}
 
 function renderProducts(filter) {
   grid.innerHTML = '';
-  let i = 0;
-  Object.keys(CATALOG).forEach(cap => {
-    if (filter !== 'all' && cap !== filter) return;
-    CATALOG[cap].forEach(v => {
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.style.animationDelay = (i * 0.07) + 's';
-      i++;
-      card.innerHTML = `
-        <div class="cap-row">
-          <span class="cap">${cap}Ah</span>
-          <span class="volt">${v}V</span>
-        </div>
-        <div class="series">${cap} Ah Series</div>
-        <div class="spec-tags">
-          <span>Pure Sine Wave</span>
-          <span>Lithium-ion</span>
-          <span>5yr Warranty</span>
-        </div>
-        <div class="price-row">
-          <span class="price">Price on enquiry</span>
-          <a href="#contact" class="enquire">Enquire →</a>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
+  const cards = [];
+
+  if (filter === 'inverter') {
+    INVERTERS.forEach(va => cards.push(inverterCard(va)));
+  } else if (filter === 'all') {
+    Object.keys(CATALOG).forEach(cap => CATALOG[cap].forEach(v => cards.push(batteryCard(cap, v))));
+    INVERTERS.forEach(va => cards.push(inverterCard(va)));
+  } else {
+    (CATALOG[filter] || []).forEach(v => cards.push(batteryCard(filter, v)));
+  }
+
+  cards.forEach((card, i) => {
+    card.style.animationDelay = (i * 0.07) + 's';
+    grid.appendChild(card);
   });
 }
 renderProducts('all');
@@ -156,7 +198,7 @@ document.getElementById('filterRow').addEventListener('click', (e) => {
   const input = document.getElementById('chatInput');
   const sendBtn = form.querySelector('.chat-send');
 
-  const GREETING = "Hi! I'm the AuraSine assistant. Ask me about our lithium-ion pure sine wave inverters — capacities, warranty, technology, or how to become a dealer. For pricing or to place an order, tap the WhatsApp icon above anytime. 🙂";
+  const GREETING = "Hi! I'm the AuraSine assistant. Ask me about our LiFePO4 pure sine wave batteries and complete inverter systems — capacities, warranty, technology, or how to become a dealer. For pricing or to place an order, tap the WhatsApp icon above anytime. 🙂";
 
   let history = []; // { role: 'user' | 'assistant', text }
   let opened = false;

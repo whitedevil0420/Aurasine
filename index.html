@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AuraSine — Lithium-ion Pure Sine Wave Inverters. Premium power backup for homes and businesses.">
+<title>AuraSine — Lithium-ion Pure Sine Wave Inverters</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="preloader">
+  <svg class="preloader-mark" viewBox="0 0 120 60">
+    <path class="pl-square" d="M2,30 L2,10 L32,10 L32,50 L62,50 L62,10 L92,10 L92,50 L118,50"/>
+    <path class="pl-sine" d="M2,30 C17,4 32,4 47,30 C62,56 77,56 92,30 C97,21 102,17 108,17"/>
+  </svg>
+  <div class="preloader-label">AuraSine</div>
+  <div class="preloader-bar"><span></span></div>
+</div>
+
+<!-- AI SUPPORT CHAT WIDGET -->
+<div class="chat-widget" id="chatWidget">
+
+  <!-- Launcher button -->
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open AuraSine support chat" aria-expanded="false">
+    <svg class="ic-chat" viewBox="0 0 26 26"><path d="M4 6h18a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H10l-5 4v-4H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/><path d="M7.5 10.5 C9 8, 10.5 8, 11.5 10.5 S13.5 13, 15 10.5" class="ic-wave"/></svg>
+    <svg class="ic-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    <span class="chat-dot"></span>
+  </button>
+
+  <!-- Chat panel -->
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="AuraSine support chat">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <svg class="chat-logo-mark" viewBox="0 0 26 26"><path d="M1 13 C4 4, 8 4, 11 13 S18 22, 21 13 S25 13, 25 13"/></svg>
+        <div>
+          <div class="chat-title">AuraSine Assistant</div>
+          <div class="chat-status"><span class="status-dot"></span>Powered by AI · Online</div>
+        </div>
+      </div>
+      <a class="chat-wa-icon" href="https://wa.me/916376309311?text=Hi%20AuraSine%2C%20I%27d%20like%20to%20talk%20to%20your%20team." target="_blank" rel="noopener" aria-label="Continue on WhatsApp" title="Continue on WhatsApp">
+        <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6C28.7 8.6 23 3 16 3Zm0 23c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.3 1.3-4-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.5 9.7 10.2 5 16 5c5.8 0 10.5 4.7 10.5 10.5C26.5 21.3 21.8 26 16 26Z"/><path d="M21.4 18.3c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.3-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>
+      </a>
+    </div>
+
+    <div class="chat-messages" id="chatMessages"></div>
+
+    <div class="chat-typing" id="chatTyping" hidden>
+      <span></span><span></span><span></span>
+    </div>
+
+    <form class="chat-input-row" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Ask about capacity, warranty, price..." maxlength="500" autocomplete="off" required>
+      <button type="submit" class="chat-send" aria-label="Send">
+        <svg viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2.2-7.3L3 11.5Z"/></svg>
+      </button>
+    </form>
+    <a class="chat-wa-fallback" href="https://wa.me/916376309311?text=Hi%20AuraSine%2C%20I%27d%20like%20to%20talk%20to%20your%20team." target="_blank" rel="noopener">
+      Prefer a human? Continue on WhatsApp →
+    </a>
+  </div>
+</div>
+
+<header id="siteHeader">
+  <nav>
+    <a href="#top" class="logo">
+      <svg class="mark" viewBox="0 0 26 26"><path class="mark-path" d="M1 13 C4 4, 8 4, 11 13 S18 22, 21 13 S25 13, 25 13"/></svg>
+      AuraSine
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#tech">Technology</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#warranty">Warranty</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Become a Dealer</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow reveal">Lithium-ion &middot; Pure Sine Wave</div>
+        <h1 class="reveal" style="--d:0.05s">Power backup, <em>purified.</em></h1>
+        <p class="lead reveal" style="--d:0.1s">AuraSine builds pure sine wave inverters on lithium-ion cells — faster charging, a decade-long lifespan, and current clean enough for your most sensitive appliances.</p>
+        <div class="btn-row reveal" style="--d:0.15s">
+          <a href="#products" class="btn btn-primary"><span>Explore Products</span> →</a>
+          <a href="#contact" class="btn btn-ghost">Become a Dealer</a>
+        </div>
+        <div class="hero-stats reveal" style="--d:0.2s">
+          <div><strong class="count" data-count="4" data-suffix="×">0×</strong><span>Faster charging</span></div>
+          <div><strong class="count" data-count="10" data-suffix=" yr">0 yr</strong><span>Typical lifespan</span></div>
+          <div><strong class="count" data-count="3" data-prefix="1/">1/0</strong><span>The weight of lead-acid</span></div>
+        </div>
+      </div>
+      <div class="wave-box reveal" style="--d:0.1s">
+        <svg viewBox="0 0 460 160" preserveAspectRatio="none">
+          <path class="wave-square" d="M0,80 L0,30 L57,30 L57,130 L115,130 L115,30 L172,30 L172,130 L230,130 L230,30 L287,30 L287,130 L345,130 L345,30 L402,30 L402,130 L460,130"/>
+          <path class="wave-sine" d="M0,80 C38,10 78,10 115,80 C153,150 192,150 230,80 C268,10 307,10 345,80 C383,150 422,150 460,80"/>
+        </svg>
+        <div class="wave-labels">
+          <span class="wl-old">— Old: Modified Square Wave</span>
+          <span class="wl-new">AuraSine: Pure Sine Wave —</span>
+        </div>
+        <p class="wave-caption">Cheaper inverters approximate a sine wave with rough steps — motors buzz, chargers overheat, sensitive electronics wear out faster. AuraSine reproduces the smooth curve of grid power exactly.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,17 C50,0 100,34 150,17 C200,0 250,34 300,17 C350,0 400,34 450,17 C500,0 550,34 600,17 C650,0 700,34 750,17 C800,0 850,34 900,17 C950,0 1000,34 1050,17 C1100,0 1150,34 1200,17" fill="none" stroke="#E7ECF3" stroke-width="2"/></svg>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits" id="benefits">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Why AuraSine</div>
+        <h2>Built for homes and businesses that can't afford rough power.</h2>
+        <p>Every unit we ship pairs a lithium-ion battery pack with a true pure sine wave output stage.</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit-card reveal" style="--d:0s">
+          <svg class="icon" viewBox="0 0 38 38"><path d="M4,20 C10,6 14,6 19,20 C24,34 28,34 34,20"/></svg>
+          <h3>100% Pure Sine Wave</h3>
+          <p>Output identical to grid power — safe for motors, medical devices, and chargers.</p>
+        </div>
+        <div class="benefit-card reveal" style="--d:0.08s">
+          <svg class="icon" viewBox="0 0 38 38"><path d="M19,3 L11,20 L18,20 L16,35 L27,16 L20,16 Z"/></svg>
+          <h3>Lithium-ion Core</h3>
+          <p>Charges in a quarter of the time and holds capacity for thousands of cycles.</p>
+        </div>
+        <div class="benefit-card reveal" style="--d:0.16s">
+          <svg class="icon" viewBox="0 0 38 38"><rect x="7" y="10" width="24" height="18" rx="2"/><path d="M31,15 L35,15 L35,23 L31,23"/></svg>
+          <h3>Compact &amp; Lightweight</h3>
+          <p>A third of the weight and footprint of an equivalent lead-acid system.</p>
+        </div>
+        <div class="benefit-card reveal" style="--d:0.24s">
+          <svg class="icon" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15"/><path d="M13,19 L17,23 L26,13"/></svg>
+          <h3>Zero Maintenance</h3>
+          <p>No water top-ups, no acid, no fumes — sealed cells that just keep working.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+  <section class="tech" id="tech">
+    <div class="tech-bg" aria-hidden="true"><div class="blob blob-3"></div></div>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">The Technology Edge</div>
+        <h2>Lithium-ion vs. lead-acid, side by side.</h2>
+        <p>The numbers are why the industry is moving away from lead-acid — here's the comparison plainly laid out.</p>
+      </div>
+      <div class="compare reveal">
+        <div class="head">Specification</div>
+        <div class="head col-old">Lead-Acid (old)</div>
+        <div class="head col-new">AuraSine Li-ion</div>
+
+        <div>Full charge time</div>
+        <div class="col-old">8–10 hours</div>
+        <div class="col-new">2–3 hours</div>
+
+        <div>Typical lifespan</div>
+        <div class="col-old">3–5 years</div>
+        <div class="col-new">8–10 years</div>
+
+        <div>Usable depth of discharge</div>
+        <div class="col-old">~50%</div>
+        <div class="col-new">Up to 90%</div>
+
+        <div>Weight (comparable class)</div>
+        <div class="col-old">~28–30 kg</div>
+        <div class="col-new">~9–10 kg</div>
+
+        <div>Maintenance</div>
+        <div class="col-old">Periodic water top-up</div>
+        <div class="col-new">Sealed, maintenance-free</div>
+      </div>
+
+      <div class="sine-note">
+        <div class="reveal">
+          <h3>Why the wave shape matters</h3>
+          <p>Modified square wave inverters approximate grid power in rough steps. Motors run hotter and noisier, laptop and phone chargers lose efficiency, and sensitive electronics — routers, medical equipment, audio gear — degrade faster.</p>
+          <p>AuraSine's pure sine wave output matches utility power precisely, so every appliance in the house runs exactly as it would on grid electricity.</p>
+        </div>
+        <svg class="mini-wave reveal" viewBox="0 0 400 90" preserveAspectRatio="none">
+          <path class="bad" d="M0,45 L0,15 L50,15 L50,75 L100,75 L100,15 L150,15 L150,75 L200,75 L200,15 L250,15 L250,75 L300,75 L300,15 L350,15 L350,75 L400,75"/>
+          <path class="good" d="M0,45 C25,10 75,10 100,45 C125,80 175,80 200,45 C225,10 275,10 300,45 C325,80 375,80 400,45"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Product Range</div>
+        <h2>Every capacity we manufacture, one platform.</h2>
+        <p>All models share the same lithium-ion cell chemistry and pure sine wave engine — pick the capacity and voltage your load needs.</p>
+      </div>
+      <div class="filter-row reveal" id="filterRow">
+        <button class="filter-btn active" data-filter="all">All Series</button>
+        <button class="filter-btn" data-filter="100">100 Ah</button>
+        <button class="filter-btn" data-filter="200">200 Ah</button>
+        <button class="filter-btn" data-filter="500">500 Ah</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <!-- WARRANTY -->
+  <section class="warranty" id="warranty">
+    <div class="wrap">
+      <div class="warranty-item reveal" style="--d:0s"><span class="num count" data-count="5" data-suffix=" yr">0 yr</span><span class="lbl">Standard battery warranty across the range</span></div>
+      <div class="warranty-item reveal" style="--d:0.08s"><span class="num count" data-count="3000" data-suffix="+">0+</span><span class="lbl">Charge cycles before capacity fade</span></div>
+      <div class="warranty-item reveal" style="--d:0.16s"><span class="num">24/7</span><span class="lbl">Dealer &amp; service network support</span></div>
+      <div class="warranty-item reveal" style="--d:0.24s"><span class="num">ISI</span><span class="lbl">Compliant cell &amp; safety standards</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="eyebrow reveal">Get in Touch</div>
+      <h2 class="reveal">Talk to us about your power backup needs — or start a dealership.</h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p>Whether you need a single home unit or want to stock the full AuraSine range as a distributor, our team responds within one business day.</p>
+          <div class="info-row"><span class="lbl">Phone</span><span class="val"><a href="tel:+916376309311">+91 63763 09311</a></span></div>
+          <div class="info-row"><span class="lbl">WhatsApp</span><span class="val"><a href="https://wa.me/916376309311" target="_blank" rel="noopener">+91 63763 09311</a></span></div>
+          <div class="info-row"><span class="lbl">Email</span><span class="val"><a href="mailto:yogeshdhaka311@gmail.com">yogeshdhaka311@gmail.com</a></span></div>
+          <div class="info-row"><span class="lbl">Hours</span><span class="val">Mon–Sat, 9:30 AM – 6:30 PM</span></div>
+        </div>
+        <form id="enquiryForm" class="reveal">
+          <div class="row-2">
+            <div class="field"><label for="name">Full name</label><input id="name" type="text" placeholder="Your name" required></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" type="tel" placeholder="10-digit number" required></div>
+          </div>
+          <div class="field"><label for="type">I am a</label>
+            <select id="type">
+              <option>Home / business buyer</option>
+              <option>Prospective dealer / distributor</option>
+              <option>Existing customer — warranty support</option>
+            </select>
+          </div>
+          <div class="field"><label for="msg">Message</label><textarea id="msg" rows="4" placeholder="Tell us your capacity and voltage requirement"></textarea></div>
+          <button type="submit" class="btn btn-primary"><span>Send on WhatsApp</span> →</button>
+          <p class="form-note">Sends your message straight to our WhatsApp — no data stored on this site.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-logo">AuraSine</div>
+    <ul class="f-links">
+      <li><a href="#tech">Technology</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Dealer Enquiry</a></li>
+    </ul>
+    <small>&copy; 2026 AuraSine. Pricing shared on enquiry.</small>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

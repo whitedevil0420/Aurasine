@@ -1,0 +1,16 @@
+# AuraSine
+
+> LiFePO4 (Lithium Iron Phosphate) pure sine wave inverter and battery manufacturer, serving the Indian market.
+
+AuraSine manufactures:
+- Standalone LiFePO4 battery packs: 100Ah (12V), 200Ah (12V, 24V), 500Ah (12V, 24V, 48V)
+- Complete pure sine wave inverter systems with Bluetooth app monitoring: 1500VA, 2500VA, 5000VA
+
+Key facts:
+- Pure sine wave output — same clean waveform as grid electricity, unlike cheaper modified square wave inverters.
+- LiFePO4 vs lead-acid: charges in 2-3 hours (vs 8-10), lasts 8-10 years (vs 3-5), sealed and maintenance-free.
+- Warranty: 5 years standard, rated for 3000+ charge cycles.
+- Pricing is shared on enquiry, not published.
+- Contact: WhatsApp / phone +91 63763 09311, email yogeshdhaka311@gmail.com.
+
+This file follows the emerging llms.txt convention (llmstxt.org) to help AI assistants summarize this site accurately. It is not an official web standard yet and isn't read by every AI system, but costs nothing to include.

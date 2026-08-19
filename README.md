@@ -3,11 +3,14 @@
 Static site (HTML + CSS + JS) with one small serverless function for the AI support chat. Built for Vercel — no build step needed.
 
 ## Files
-- `index.html` — page structure (hero, products, contact, chat widget)
+- `index.html` — page structure (hero, products, contact, chat widget) + SEO meta tags & structured data
 - `styles.css` — all styling + animations
 - `script.js` — animations, product catalog, contact form, chat widget logic
 - `api/chat.js` — **serverless function** that talks to Gemini on the server side, so your API key is never exposed to visitors
 - `favicon.svg` — browser tab icon
+- `robots.txt` — tells search engines & AI crawlers what they can read
+- `sitemap.xml` — page map for search engine submission
+- `llms.txt` — plain-text summary of the site for AI assistants
 
 ## ⚠️ About the Gemini API key — read this first
 
@@ -57,6 +60,23 @@ Create a file named `.env.local` in this folder with:
 GEMINI_API_KEY=your_key_here
 ```
 `vercel dev` will pick it up automatically. This file is already excluded via `.gitignore` — never commit it.
+
+## SEO — what's done, what you need to do, and an honest expectation
+
+**What's already in the code:**
+- Proper `<title>` and meta description with real keywords (LiFePO4, pure sine wave, inverter capacities).
+- Open Graph + Twitter Card tags, so links look good when shared on WhatsApp/social.
+- **Structured data (JSON-LD)**: an `Organization` schema with your contact details, and an `FAQPage` schema answering common questions (chemistry, capacities, Bluetooth, warranty, pricing). This is what helps Google show rich results, and helps AI search tools (ChatGPT, Perplexity, Gemini, etc.) pull accurate facts about AuraSine when someone asks about you.
+- `robots.txt` — explicitly allows Google, Bing, and known AI crawlers (GPTBot, Google-Extended, PerplexityBot, ClaudeBot, etc.) to read your site.
+- `sitemap.xml` — the map search engines use to find your page(s).
+- `llms.txt` — a plain-text summary of AuraSine for AI systems. This is a new, informal convention (not every AI reads it yet), but it's free to include.
+
+**You need to do 3 things after deploying:**
+1. **Set your real domain.** Every file above has `YOUR-DOMAIN-HERE.vercel.app` as a placeholder (in `index.html`'s `<head>`, `sitemap.xml`, and `robots.txt`). Find-and-replace it with your actual live URL once you know it — these tags don't work correctly with a placeholder.
+2. **Submit to Google Search Console** (free, ~5 minutes): go to [search.google.com/search-console](https://search.google.com/search-console), add your domain, verify ownership (Google gives you a meta tag — paste it into the commented line near the top of `index.html`'s `<head>`), then submit `sitemap.xml` under Sitemaps. Do the same on [Bing Webmaster Tools](https://www.bing.com/webmasters) — it also feeds Bing's AI ("Copilot") search.
+3. **Create a free Google Business Profile** ([business.google.com](https://business.google.com)) with your phone number and service area. For a business like this, local searches ("inverter dealer near me", "LiFePO4 battery [your city]") often matter more than generic Google ranking, and this is what makes you show up on Google Maps too.
+
+**The honest part:** none of this — not from me, not from any SEO agency — guarantees a #1 ranking. Google's ranking depends on things outside the code too: how old and trusted your domain is, how many other sites link to yours, customer reviews, and how often the site is updated with real content. What this setup *does* guarantee is that your site is technically correct and fully readable by every search engine and AI crawler — nothing is hidden or broken. Ranking well after that is an ongoing process (reviews, backlinks, maybe a blog/updates page later), not a one-time fix.
 
 ## Editing later
 - **Prices**: edit the `<span class="price">Price on enquiry</span>` line inside `batteryCard()` / `inverterCard()` in `script.js`, or hardcode per-model prices there once decided.

@@ -24,10 +24,21 @@ FACTS YOU CAN SHARE (do not invent anything beyond this):
 - Pricing: not published on the site — always tell the user pricing is shared on enquiry / WhatsApp, and never guess a number.
 - Contact: WhatsApp / phone +91 63763 09311, email yogeshdhaka311@gmail.com.
 
+SIZING AN INVERTER FOR A CUSTOMER'S LOAD:
+When a customer lists appliances and asks which inverter suits them, actually do the sizing — don't just describe the products. Use these approximate running-wattage figures (tell the user they're approximate; exact figures are printed on the appliance's rating label):
+  • Ceiling fan: ~75W
+  • LED bulb/tube light: ~10-15W
+  • Desert/air cooler: ~170-250W
+  • Semi-automatic washing machine: ~350-500W (fully automatic can be 500-2000W)
+  • Refrigerator: ~150-250W
+  • Water pump (0.5HP): ~370-450W
+  • TV (LED, 32-43"): ~60-100W
+Method: add up the running watts of everything likely to run together, then add roughly 25-30% extra headroom because motor-driven appliances (coolers, washing machines, pumps, fridges) draw a brief surge well above their running watts when they switch on. Compare that total to the available complete-inverter sizes (1500VA, 2500VA, 5000VA) and recommend the smallest one that comfortably covers it, showing your math briefly. If the total is close to a size boundary, recommend the larger one and explain why (surge headroom, room to add appliances later). Always close by saying the WhatsApp team can confirm the exact model once they know precise appliance ratings.
+
 HOW TO BEHAVE:
 - Answer only questions related to Sinewave Inverters, its products, inverter/battery technology, warranty, or how to buy/become a dealer. For anything unrelated (general knowledge, coding, other brands, etc.), politely say you can only help with Sinewave Inverters-related questions.
 - If the user wants to place an order, needs an exact price/quote, wants installation, has a warranty/service issue, or asks to speak to a person — tell them to tap the WhatsApp button in this chat window to continue with our team.
-- Keep answers short and clear (2-4 sentences), suitable for a small chat bubble on mobile.
+- Keep general answers short (2-4 sentences). For a sizing/load calculation question, you may use up to ~8 short lines (a quick breakdown + final recommendation) — but always finish your sentence and end with a clear, complete recommendation; never trail off mid-thought.
 - Reply in the same language/style the user writes in — Hindi, Hinglish, or English.
 - Never invent specifications, prices, addresses, or warranty terms beyond what's listed above.
 `.trim();
@@ -86,21 +97,30 @@ module.exports = async function handler(req, res) {
       },
       body: JSON.stringify({
         contents,
-        generationConfig: { temperature: 0.4, maxOutputTokens: 350 },
+        generationConfig: { temperature: 0.4, maxOutputTokens: 700 },
       }),
     });
 
     const data = await geminiRes.json();
 
     if (!geminiRes.ok) {
-      console.error("Gemini API error:", data);
-      res.status(502).json({ error: "AI service is temporarily unavailable. Please try WhatsApp instead." });
+      console.error("Gemini API error:", geminiRes.status, data);
+      const message =
+        geminiRes.status === 429
+          ? "We're getting a lot of questions right now — please wait a few seconds and try again, or use WhatsApp."
+          : "AI service is temporarily unavailable. Please try WhatsApp instead.";
+      res.status(502).json({ error: message });
       return;
     }
 
-    const reply =
-      data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join("").trim() ||
-      "Sorry, I couldn't generate a reply just now. Please try WhatsApp instead.";
+    const candidate = data?.candidates?.[0];
+    const reply = candidate?.content?.parts?.map((p) => p.text).join("").trim();
+
+    if (!reply) {
+      console.error("Gemini returned no usable text. finishReason:", candidate?.finishReason, data);
+      res.status(200).json({ reply: "Sorry, I couldn't generate a reply just now. Please try WhatsApp instead." });
+      return;
+    }
 
     res.status(200).json({ reply });
   } catch (err) {

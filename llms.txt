@@ -1,8 +1,8 @@
-# AuraSine
+# Sinewave Inverters
 
 > LiFePO4 (Lithium Iron Phosphate) pure sine wave inverter and battery manufacturer, serving the Indian market.
 
-AuraSine manufactures:
+Sinewave Inverters manufactures:
 - Standalone LiFePO4 battery packs: 100Ah (12V), 200Ah (12V, 24V), 500Ah (12V, 24V, 48V)
 - Complete pure sine wave inverter systems with Bluetooth app monitoring: 1500VA, 2500VA, 5000VA
 

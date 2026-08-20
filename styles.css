@@ -418,7 +418,7 @@ footer small{font-size:12px;}
   .compare{grid-template-columns:1fr;}
   .compare .head:nth-child(2),.compare .head:nth-child(3){display:none;}
   .compare>div:nth-child(3n+2)::before{content:"Lead-Acid: ";font-family:var(--body);color:var(--slate);}
-  .compare>div:nth-child(3n)::before{content:"AuraSine LiFePO4: ";font-family:var(--body);color:var(--volt-dim);}
+  .compare>div:nth-child(3n)::before{content:"Our LiFePO4: ";font-family:var(--body);color:var(--volt-dim);}
   .row-2{grid-template-columns:1fr;}
   .hero-stats{gap:20px;flex-wrap:wrap;}
   footer .wrap{flex-direction:column;text-align:center;}

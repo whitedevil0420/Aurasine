@@ -1,4 +1,4 @@
-# AuraSine — robots.txt
+# Sinewave Inverters — robots.txt
 # Everything is allowed to crawl. Update the Sitemap line below once
 # your final domain is live (see index.html <head> for the same note).
 
@@ -6,7 +6,7 @@ User-agent: *
 Allow: /
 
 # Common AI assistant / AI-search crawlers — explicitly allowed so
-# AuraSine can be found and cited by AI search tools, not just Google.
+# Sinewave Inverters can be found and cited by AI search tools, not just Google.
 User-agent: GPTBot
 Allow: /
 
@@ -28,4 +28,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://YOUR-DOMAIN-HERE.vercel.app/sitemap.xml
+Sitemap: https://sinepower.vercel.app/sitemap.xml

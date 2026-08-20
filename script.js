@@ -1,5 +1,5 @@
 // ===================================================================
-// AuraSine — main script
+// Sinewave Inverters — main script
 // ===================================================================
 
 /* ---------- PRELOADER (shows for a minimum ~2s so the intro animation actually plays) ---------- */
@@ -198,7 +198,7 @@ document.getElementById('filterRow').addEventListener('click', (e) => {
   const input = document.getElementById('chatInput');
   const sendBtn = form.querySelector('.chat-send');
 
-  const GREETING = "Hi! I'm the AuraSine assistant. Ask me about our LiFePO4 pure sine wave batteries and complete inverter systems — capacities, warranty, technology, or how to become a dealer. For pricing or to place an order, tap the WhatsApp icon above anytime. 🙂";
+  const GREETING = "Hi! I'm the Sinewave Inverters assistant. Ask me about our LiFePO4 pure sine wave batteries and complete inverter systems — capacities, warranty, technology, or how to become a dealer. For pricing or to place an order, tap the WhatsApp icon above anytime. 🙂";
 
   let history = []; // { role: 'user' | 'assistant', text }
   let opened = false;
@@ -286,7 +286,7 @@ form.addEventListener('submit', (e) => {
   const msg = document.getElementById('msg').value.trim();
 
   const lines = [
-    `Hi AuraSine, I'd like to enquire.`,
+    `Hi Sinewave Inverters, I'd like to enquire.`,
     `Name: ${name}`,
     `Phone: ${phone}`,
     `I am a: ${type}`,

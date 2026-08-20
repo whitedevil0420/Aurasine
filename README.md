@@ -1,4 +1,4 @@
-# AuraSine — Website
+# Sinewave Inverters — Website
 
 Static site (HTML + CSS + JS) with one small serverless function for the AI support chat. Built for Vercel — no build step needed.
 
@@ -66,13 +66,13 @@ GEMINI_API_KEY=your_key_here
 **What's already in the code:**
 - Proper `<title>` and meta description with real keywords (LiFePO4, pure sine wave, inverter capacities).
 - Open Graph + Twitter Card tags, so links look good when shared on WhatsApp/social.
-- **Structured data (JSON-LD)**: an `Organization` schema with your contact details, and an `FAQPage` schema answering common questions (chemistry, capacities, Bluetooth, warranty, pricing). This is what helps Google show rich results, and helps AI search tools (ChatGPT, Perplexity, Gemini, etc.) pull accurate facts about AuraSine when someone asks about you.
+- **Structured data (JSON-LD)**: an `Organization` schema with your contact details, and an `FAQPage` schema answering common questions (chemistry, capacities, Bluetooth, warranty, pricing). This is what helps Google show rich results, and helps AI search tools (ChatGPT, Perplexity, Gemini, etc.) pull accurate facts about Sinewave Inverters when someone asks about you.
 - `robots.txt` — explicitly allows Google, Bing, and known AI crawlers (GPTBot, Google-Extended, PerplexityBot, ClaudeBot, etc.) to read your site.
 - `sitemap.xml` — the map search engines use to find your page(s).
-- `llms.txt` — a plain-text summary of AuraSine for AI systems. This is a new, informal convention (not every AI reads it yet), but it's free to include.
+- `llms.txt` — a plain-text summary of Sinewave Inverters for AI systems. This is a new, informal convention (not every AI reads it yet), but it's free to include.
 
 **You need to do 3 things after deploying:**
-1. **Set your real domain.** Every file above has `YOUR-DOMAIN-HERE.vercel.app` as a placeholder (in `index.html`'s `<head>`, `sitemap.xml`, and `robots.txt`). Find-and-replace it with your actual live URL once you know it — these tags don't work correctly with a placeholder.
+1. **Set your real domain.** Every file above has `sinepower.vercel.app` as a placeholder (in `index.html`'s `<head>`, `sitemap.xml`, and `robots.txt`). Find-and-replace it with your actual live URL once you know it — these tags don't work correctly with a placeholder.
 2. **Submit to Google Search Console** (free, ~5 minutes): go to [search.google.com/search-console](https://search.google.com/search-console), add your domain, verify ownership (Google gives you a meta tag — paste it into the commented line near the top of `index.html`'s `<head>`), then submit `sitemap.xml` under Sitemaps. Do the same on [Bing Webmaster Tools](https://www.bing.com/webmasters) — it also feeds Bing's AI ("Copilot") search.
 3. **Create a free Google Business Profile** ([business.google.com](https://business.google.com)) with your phone number and service area. For a business like this, local searches ("inverter dealer near me", "LiFePO4 battery [your city]") often matter more than generic Google ranking, and this is what makes you show up on Google Maps too.
 
@@ -84,7 +84,7 @@ GEMINI_API_KEY=your_key_here
 - **Email**: search `yogeshdhaka311@gmail.com` in `index.html`.
 - **Battery range**: edit the `CATALOG` object near the top of `script.js`.
 - **Inverter range (VA ratings)**: edit the `INVERTERS` array right below `CATALOG` in `script.js`.
-- **What the AI chatbot knows**: edit `SYSTEM_CONTEXT` at the top of `api/chat.js` — that's the only place its facts about AuraSine come from. (The actual Gemini API call, headers, and key handling below it should not need to change.)
+- **What the AI chatbot knows**: edit `SYSTEM_CONTEXT` at the top of `api/chat.js` — that's the only place its facts about Sinewave Inverters come from. (The actual Gemini API call, headers, and key handling below it should not need to change.)
 - **Chatbot model**: `api/chat.js` uses `gemini-flash-latest`, Google's alias that always points to their current recommended fast model, so it won't go stale.
 
 ## Notes on this update
